@@ -16,10 +16,9 @@ class NameLoadTest {
     @Test
     void checkEmptyInParse() {
         NameLoad nameLoad = new NameLoad();
-        assertThatThrownBy(() -> nameLoad.parse(""))
+        assertThatThrownBy(nameLoad::parse)
                 .isInstanceOf(IllegalArgumentException.class)
-                .message()
-                .isNotEmpty();
+                .hasMessageContaining("Names array is empty");
     }
 
     @Test
