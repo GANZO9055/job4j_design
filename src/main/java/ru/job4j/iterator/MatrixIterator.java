@@ -18,7 +18,6 @@ public class MatrixIterator implements Iterator<Integer> {
             column = 0;
             row++;
         }
-
         return row < data.length;
     }
 
@@ -27,7 +26,6 @@ public class MatrixIterator implements Iterator<Integer> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-
         return data[row][column++];
     }
 }
