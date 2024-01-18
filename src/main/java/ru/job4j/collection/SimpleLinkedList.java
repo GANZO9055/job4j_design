@@ -38,8 +38,6 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
     public Iterator<E> iterator() {
         return new Iterator<E>() {
 
-            private Node<E> last;
-            private Node<E> first = head;
             final int expectedModCount = modCount;
             private Node<E> value = head;
 
@@ -56,10 +54,9 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                last = first;
-                first = first.next;
+                E result = value.item;
                 value = value.next;
-                return last.item;
+                return result;
             }
         };
     }
