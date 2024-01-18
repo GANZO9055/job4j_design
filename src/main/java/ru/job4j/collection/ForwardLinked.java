@@ -54,8 +54,6 @@ public class ForwardLinked<T> implements Iterable<T> {
     public Iterator<T> iterator() {
         return new Iterator<T>() {
 
-            private Node<T> last;
-            private Node<T> first = head;
             final int expectedModCount = modCount;
             private Node<T> value = head;
 
@@ -72,10 +70,9 @@ public class ForwardLinked<T> implements Iterable<T> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                last = first;
-                first = first.next;
+                T result = value.item;
                 value = value.next;
-                return last.item;
+                return result;
             }
         };
     }
