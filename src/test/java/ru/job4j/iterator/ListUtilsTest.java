@@ -62,6 +62,6 @@ class ListUtilsTest {
         assertThat(input).hasSize(6).containsSequence(1, 2, 4, 3, 2, 3);
 
         ListUtils.removeAll(input, new ArrayList<>(Arrays.asList(1, 2, 3)));
-        assertThat(input).hasSize(1).containsSequence(4);
+        assertThat(input).hasSize(1).contains(4);
     }
 }
