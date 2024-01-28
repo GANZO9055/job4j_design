@@ -150,4 +150,56 @@ class NonCollisionMapTest {
         assertThat(map.put(0, "0")).isTrue();
         assertThat(map.get(null)).isNull();
     }
+
+    @Test
+    void checkPut() {
+        assertThat(map.put(5, "5")).isTrue();
+        assertThat(map.put(6, "6")).isTrue();
+        assertThat(map.put(7, "7")).isTrue();
+        assertThat(map)
+                .hasSize(7)
+                .contains(1, 2, 3, 4, 5, 6, 7);
+        assertThat(map.put(36, "36")).isFalse();
+    }
+
+    @Test
+    void checkGet() {
+        assertThat(map.put(5, "5")).isTrue();
+        assertThat(map.put(6, "6")).isTrue();
+        assertThat(map.put(7, "7")).isTrue();
+        assertThat(map.put(10, null)).isTrue();
+        assertThat(map.get(5)).isEqualTo("5");
+        assertThat(map.get(7)).isEqualTo("7");
+        assertThat(map.get(10)).isNull();
+    }
+
+    @Test
+    void checkPutAndGet() {
+        assertThat(map.put(5, "5")).isTrue();
+        assertThat(map.put(6, "6")).isTrue();
+        assertThat(map.put(7, "7")).isTrue();
+        assertThat(map.put(10, null)).isTrue();
+        assertThat(map.put(null, "10")).isTrue();
+        assertThat(map.get(5)).isEqualTo("5");
+        assertThat(map.get(7)).isEqualTo("7");
+        assertThat(map.get(10)).isNull();
+        assertThat(map.get(null)).isEqualTo("10");
+    }
+
+    @Test
+    void checkRemove() {
+        assertThat(map.put(5, "5")).isTrue();
+        assertThat(map.put(6, "6")).isTrue();
+        assertThat(map.put(7, "7")).isTrue();
+        assertThat(map.remove(6)).isTrue();
+        assertThat(map.get(6)).isNull();
+        assertThat(map).contains(1, 2, 3, 4, 5, 7);
+    }
+
+    @Test
+    void checkRemoveWithNull() {
+        assertThat(map.remove(4)).isTrue();
+        assertThat(map).contains(1, 2, 3);
+        assertThat(map.remove(4)).isFalse();
+    }
 }
