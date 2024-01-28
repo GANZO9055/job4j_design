@@ -17,7 +17,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     @Override
     public boolean put(K key, V value) {
         boolean status = false;
-        if (table.length * LOAD_FACTOR == count) {
+        if (count >= table.length * LOAD_FACTOR) {
             expand();
         }
         int index = getIndex(key);
@@ -34,14 +34,15 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         return hashCode ^ (hashCode >>> 16);
     }
     private int indexFor(int hash) {
-        return hash & (table.length - 1);
+        return hash & (capacity - 1);
     }
 
     private void expand() {
-        MapEntry<K, V>[] newTable = new MapEntry[capacity * 2];
+        capacity *= 2;
+        MapEntry<K, V>[] newTable = new MapEntry[capacity];
         for (MapEntry<K, V> value : table) {
             if (value != null) {
-                int number = hash(Objects.hashCode(value.key)) & ((newTable.length) - 1);
+                int number = getIndex(value.key);
                 newTable[number] = value;
             }
         }
@@ -51,14 +52,9 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     @Override
     public V get(K key) {
         V status = null;
-        int number = getIndex(key);
-        MapEntry<K, V> numberOne = table[getIndex(key)];
-        if (numberOne != null) {
-            if (number == 0 || compare(numberOne.key.hashCode(), key.hashCode())) {
-                if (compare(numberOne.key, key)) {
-                    status = numberOne.value;
-                }
-            }
+        MapEntry<K, V> valueOne = table[getIndex(key)];
+        if (trueOrFalse(valueOne, key)) {
+            status = valueOne.value;
         }
         return status;
     }
@@ -66,15 +62,23 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     @Override
     public boolean remove(K key) {
         boolean status = false;
+        MapEntry<K, V> valueTwo = table[getIndex(key)];
+        if (trueOrFalse(valueTwo, key)) {
+            table[getIndex(key)] = null;
+            status = true;
+            modCount++;
+            count--;
+        }
+        return status;
+    }
+
+    private boolean trueOrFalse(MapEntry<K, V> value, K key) {
+        boolean status = false;
         int number = getIndex(key);
-        MapEntry<K, V> numberTwo = table[number];
-        if (numberTwo != null) {
-            if (number == 0 || compare(numberTwo.key.hashCode(), key.hashCode())) {
-                if (compare(numberTwo.key, key)) {
-                    table[getIndex(key)] = null;
+        if (value != null) {
+            if (number == 0 || compare(value.key.hashCode(), key.hashCode())) {
+                if (compare(value.key, key)) {
                     status = true;
-                    modCount++;
-                    count--;
                 }
             }
         }
