@@ -20,26 +20,19 @@ public class Analize {
         for (User userTwo : current) {
             mapCurrent.put(userTwo.getId(), userTwo.getName());
         }
-
-        for (Integer userOne : mapCurrent.keySet()) {
-            if (!mapPrevious.containsKey(userOne)) {
+        for (Map.Entry<Integer, String> userOne : mapCurrent.entrySet()) {
+            if (!mapPrevious.containsKey(userOne.getKey())) {
                 add++;
             }
-        }
-
-        for (Map.Entry<Integer, String> userOne : mapPrevious.entrySet()) {
-            if (mapCurrent.containsKey(userOne.getKey())
-                    && !mapCurrent.containsValue(userOne.getValue())) {
+            if (mapPrevious.containsKey(userOne.getKey())
+                    && !mapPrevious.containsValue(userOne.getValue())) {
                 replace++;
             }
-        }
-
-        for (Integer userOne : mapPrevious.keySet()) {
-            if (!mapCurrent.containsKey(userOne)) {
+            if (mapPrevious.containsKey(userOne.getKey())) {
                 remove++;
             }
         }
-        return new Info(add, replace, remove);
+        return new Info(add, replace, mapPrevious.size() - remove);
     }
 
 }
