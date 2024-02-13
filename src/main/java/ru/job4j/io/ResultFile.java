@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class ResultFile {
     public static void main(String[] args) {
-        try (FileOutputStream output = new FileOutputStream("data/dataresult.txt")) {
+        try (FileOutputStream output = new FileOutputStream("data/txt/dataresult.txt")) {
             output.write(("""
                     1 * 1 = 1
                     1 * 2 = 2
