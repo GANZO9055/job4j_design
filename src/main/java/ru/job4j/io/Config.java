@@ -23,13 +23,12 @@ public class Config {
             while ((line = reader.readLine()) != null) {
                 if (!line.startsWith("#") && !line.isEmpty()) {
                     String[] string = line.split("=", 2);
-                    if (line.contains("=")
-                            && !Objects.equals(string[0], "")
-                            && !Objects.equals(string[string.length - 1], "")) {
-                        values.put(string[0], string[string.length - 1]);
-                    } else {
+                    if (!line.contains("=")
+                            || Objects.equals(string[0], "")
+                            || Objects.equals(string[string.length - 1], "")) {
                         throw new IllegalArgumentException();
                     }
+                    values.put(string[0], string[string.length - 1]);
                 }
             }
         } catch (IOException e) {
@@ -53,6 +52,6 @@ public class Config {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Config("data/txt/app.properties"));
+        System.out.println(new Config("data/properties/app.properties"));
     }
 }
