@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.StringJoiner;
 
 public class Config {
@@ -24,8 +23,8 @@ public class Config {
                 if (!line.startsWith("#") && !line.isEmpty()) {
                     String[] string = line.split("=", 2);
                     if (!line.contains("=")
-                            || Objects.equals(string[0], "")
-                            || Objects.equals(string[string.length - 1], "")) {
+                            || string[0].isBlank()
+                            || string[string.length - 1].isBlank()) {
                         throw new IllegalArgumentException();
                     }
                     values.put(string[0], string[string.length - 1]);
