@@ -23,8 +23,7 @@ public class ArgsName {
                         + "' does not contain a key");
             }
             if (strings[1].isBlank()) {
-                throw new IllegalArgumentException("Error: This argument '"
-                        + arg
+                throw new IllegalArgumentException("Error: This argument '" + arg
                         + "' does not contain a value");
             }
             values.put(strings[0].substring(1), strings[1]);
