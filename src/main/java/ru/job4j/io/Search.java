@@ -9,10 +9,12 @@ import java.util.function.Predicate;
 
 public class Search {
     public static void main(String[] args) throws IOException {
-        Path start = Paths.get(".");
+        validationArgs(args.length);
+        Path start = Paths.get(args[0]);
+        validationFile(start);
         search(start, path -> path.toFile()
                 .getName()
-                .endsWith(".js"))
+                .endsWith(args[1]))
                 .forEach(System.out::println);
     }
 
@@ -20,5 +22,22 @@ public class Search {
         SearchFiles searcher = new SearchFiles(condition);
         Files.walkFileTree(root, searcher);
         return searcher.getPaths();
+    }
+
+    private static void validationArgs(int number) {
+        if (number == 0) {
+            throw new IllegalArgumentException("Root folder is null. Usage  ROOT_FOLDER.");
+        }
+    }
+
+    private static void validationFile(Path file) {
+        if (!file.toFile().exists()) {
+            throw new IllegalArgumentException(
+                    String.format("Not exist %s", file.toFile().getAbsoluteFile()));
+        }
+        if (!file.toFile().isDirectory()) {
+            throw new IllegalArgumentException(
+                    String.format("Not directory %s", file.toFile().getAbsoluteFile()));
+        }
     }
 }
