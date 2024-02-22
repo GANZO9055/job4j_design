@@ -10,8 +10,8 @@ import java.util.function.Predicate;
 public class Search {
     public static void main(String[] args) throws IOException {
         validationArgs(args.length);
+        validationFile(Paths.get(args[0]), args[1]);
         Path start = Paths.get(args[0]);
-        validationFile(start);
         search(start, path -> path.toFile()
                 .getName()
                 .endsWith(args[1]))
@@ -25,19 +25,20 @@ public class Search {
     }
 
     private static void validationArgs(int number) {
-        if (number == 0) {
+        if (!(number == 2)) {
             throw new IllegalArgumentException("Root folder is null. Usage  ROOT_FOLDER.");
         }
     }
 
-    private static void validationFile(Path file) {
-        if (!file.toFile().exists()) {
+    private static void validationFile(Path argOne, String argTwo) {
+        if (!argOne.toFile().isDirectory()) {
             throw new IllegalArgumentException(
-                    String.format("Not exist %s", file.toFile().getAbsoluteFile()));
+                    String.format("Not directory %s", argOne.toFile().getAbsoluteFile()));
         }
-        if (!file.toFile().isDirectory()) {
+        String[] argsOne = argTwo.split("\\.", 2);
+        if (!(argsOne[0].isBlank() && !argsOne[1].isEmpty())) {
             throw new IllegalArgumentException(
-                    String.format("Not directory %s", file.toFile().getAbsoluteFile()));
+                    String.format("Not exist %s", argTwo));
         }
     }
 }
