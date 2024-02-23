@@ -25,7 +25,7 @@ public class Search {
     }
 
     private static void validationArgs(int number) {
-        if (!(number == 2)) {
+        if (number != 2) {
             throw new IllegalArgumentException("Root folder is null. Usage  ROOT_FOLDER.");
         }
     }
@@ -35,10 +35,8 @@ public class Search {
             throw new IllegalArgumentException(
                     String.format("Not directory %s", argOne.toFile().getAbsoluteFile()));
         }
-        String[] argsOne = argTwo.split("\\.", 2);
-        if (!(argsOne[0].isBlank() && !argsOne[1].isEmpty())) {
-            throw new IllegalArgumentException(
-                    String.format("Not exist %s", argTwo));
+        if (!argTwo.startsWith(".")) {
+            throw new IllegalArgumentException(String.format("Not exist %s", argTwo));
         }
     }
 }
