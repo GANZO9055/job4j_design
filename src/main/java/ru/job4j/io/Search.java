@@ -35,7 +35,7 @@ public class Search {
             throw new IllegalArgumentException(
                     String.format("Not directory %s", argOne.toFile().getAbsoluteFile()));
         }
-        if (!argTwo.startsWith(".")) {
+        if (argTwo.length() < 3 || !argTwo.startsWith(".")) {
             throw new IllegalArgumentException(String.format("Not exist %s", argTwo));
         }
     }
