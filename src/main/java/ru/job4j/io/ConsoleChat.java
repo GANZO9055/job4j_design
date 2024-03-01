@@ -13,14 +13,12 @@ public class ConsoleChat {
     private static final String CONTINUE = "продолжить";
     private final String path;
     private final String botAnswers;
-    private final List<String> phrasesBot;
     private List<String> saveLogChat;
     private boolean status;
 
     public ConsoleChat(String path, String botAnswers) {
         this.path = path;
         this.botAnswers = botAnswers;
-        this.phrasesBot = readPhrases();
         this.saveLogChat = new ArrayList<>();
         this.status = true;
     }
@@ -28,6 +26,7 @@ public class ConsoleChat {
     public void run() {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
+        List<String> phrasesBot = readPhrases();
         boolean bot = true;
         while (status) {
             String inputUser = scanner.nextLine();
