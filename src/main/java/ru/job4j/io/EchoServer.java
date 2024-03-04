@@ -21,8 +21,7 @@ public class EchoServer {
                     if (string.contains("msg=Hello")) {
                         output.write("Hello".getBytes());
                         continue;
-                    }
-                    if (string.contains("msg=")) {
+                    } else {
                         output.write("What".getBytes());
                     }
                     output.flush();
