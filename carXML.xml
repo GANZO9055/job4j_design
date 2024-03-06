@@ -1,0 +1,9 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<car name="Geely Tuareg" imported="true" age="2">
+    <person name="Dima" telephone="+7(999)999-99-99"/>
+    <specifications>
+        <specification>Red</specification>
+        <specification>Mechanical</specification>
+        <specification>Electric</specification>
+    </specifications>
+</car>
