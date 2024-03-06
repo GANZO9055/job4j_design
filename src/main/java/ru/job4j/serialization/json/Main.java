@@ -5,10 +5,9 @@ import com.google.gson.GsonBuilder;
 
 public class Main {
     public static void main(String[] args) {
-        Person person = new Person("Dima", "+7(999)999-99-99");
-        String[] specificationCar = {"Red", "Mechanical", "Electric"};
-
-        Car car = new Car("Geely Tuareg", true, "2", person, specificationCar);
+        Car car = new Car("Geely Tuareg", true, "2",
+                new Person("Dima", "+7(999)999-99-99"),
+                new String[]{"Red", "Mechanical", "Electric"});
 
         final Gson gson = new GsonBuilder().create();
         System.out.println(gson.toJson(car));
