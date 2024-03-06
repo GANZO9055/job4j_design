@@ -17,7 +17,8 @@ public class UsageLog4j {
         long paramFour = 1_000_000L;
         double paramFive = 1428.2027;
         float paramSix = 15.25F;
-        LOG.debug("Parameters: {}, {}, {}, {}, {}, {}, {}, {},", name, age, paramOne, paramTwo,
-                paramThree, paramFour, paramFive, paramSix);
+        boolean paramSeven = true;
+        LOG.debug("Parameters: {}, {}, {}, {}, {}, {}, {}, {}, {}", name, age, paramOne, paramTwo,
+                paramThree, paramFour, paramFive, paramSix, paramSeven);
     }
 }

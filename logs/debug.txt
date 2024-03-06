@@ -1,0 +1,2 @@
+2024-03-06 18:20:49,122 DEBUG ru.job4j.io.UsageLog4j:main:13 - User info name : Petr Arsentev, age : 33
+2024-03-06 18:20:49,129 DEBUG ru.job4j.io.UsageLog4j:main:21 - Parameters: Petr Arsentev, 33, j, 125, 1000, 1000000, 1428.2027, 15.25, true
