@@ -29,6 +29,18 @@ public class Car {
         this.specification = specification;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public boolean isImported() {
+        return imported;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
     @Override
     public String toString() {
         return "Car{"
