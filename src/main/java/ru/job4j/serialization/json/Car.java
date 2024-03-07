@@ -41,6 +41,14 @@ public class Car {
         return age;
     }
 
+    public Person getPerson() {
+        return person;
+    }
+
+    public String[] getSpecification() {
+        return specification;
+    }
+
     @Override
     public String toString() {
         return "Car{"

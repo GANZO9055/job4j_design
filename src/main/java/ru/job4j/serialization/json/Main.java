@@ -35,7 +35,7 @@ public class Main {
         jsonObject.put("imported", car.isImported());
         jsonObject.put("age", car.getAge());
         jsonObject.put("person", jsonPerson);
-        jsonObject.put("specifications", jsonSpecifications);
+        jsonObject.put("specification", jsonSpecifications);
 
         System.out.println(jsonObject);
 

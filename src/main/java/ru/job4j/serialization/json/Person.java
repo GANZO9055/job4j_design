@@ -18,6 +18,14 @@ public class Person {
         this.telephone = telephone;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
     @Override
     public String toString() {
         return "Person{"
