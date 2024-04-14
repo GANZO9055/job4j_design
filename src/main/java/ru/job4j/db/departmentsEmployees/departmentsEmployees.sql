@@ -61,6 +61,5 @@ values('Маша', 'Ж'),
 
 select t1.name, t2.name from teens t1
         cross join teens t2
-where t1.name != t2.name
-        and t1.gender != t2.gender
+where t1.gender != t2.gender
         and t1.gender != 'М';
