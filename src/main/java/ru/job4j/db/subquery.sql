@@ -7,7 +7,7 @@ CREATE TABLE customers
     country    text
 );
 
-INSERT INTO customers(first_name, last_name, age, country) 
+INSERT INTO customers(first_name, last_name, age, country)
 VALUES ('Ивонов', 'Иванов', 43, 'Беларусь'),
        ('Дмитрий', 'Дмитрий', 31, 'Россия'),
        ('Константин', 'Константин', 23, 'Грузия'),
