@@ -51,6 +51,6 @@ public class Config {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Config("data/properties/app.properties"));
+        System.out.println(new Config("data/properties/app1.properties"));
     }
 }

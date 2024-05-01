@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class ConnectionDemo {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        Config config = new Config("data/properties/app.properties");
+        Config config = new Config("data/properties/app1.properties");
         config.load();
         Class.forName(config.value("hibernate.connection.driver_class"));
         try (Connection connection = DriverManager.getConnection(
