@@ -24,9 +24,7 @@ public class ImportDB {
         List<User> users = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(dump))) {
             reader.lines()
-                    .filter(string -> Arrays.stream(string.split(";", 3))
-                            .filter(String::isEmpty)
-                            .count() == 2)
+                    .filter(string -> checkException(string.split(";", 3)))
                     .map(string -> {
                         String[] lines = string.split(";", 3);
                         return new User(lines[0], lines[1]);
@@ -62,6 +60,13 @@ public class ImportDB {
             this.name = name;
             this.email = email;
         }
+    }
+
+    private boolean checkException(String[] strings) {
+        if (strings.length != 2 || strings[0].isEmpty() || strings[1].isEmpty()) {
+            throw new IllegalArgumentException("Неверные данные!");
+        }
+        return true;
     }
 
 
