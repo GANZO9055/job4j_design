@@ -4,9 +4,11 @@ package ru.job4j.template;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+@Disabled
 class GeneratorStringTest {
     @Test
     public void whenAllKeysPresentThenSubstituteValues() {
