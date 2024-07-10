@@ -10,25 +10,25 @@ import ru.job4j.ood.srp.store.MemoryStore;
 
 import java.util.Calendar;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
-public class ReportEngineTest {
-
+class AccountingReportTest {
     @Test
-    public void whenOldGenerated() {
+    public void converterCurrencyRUBInEUR() {
         MemoryStore store = new MemoryStore();
         Calendar now = Calendar.getInstance();
+        InMemoryCurrencyConverter converter = new InMemoryCurrencyConverter();
         Employee worker = new Employee("Ivan", now, now, 100);
         DateTimeParser<Calendar> parser = new ReportDateTimeParser();
         store.add(worker);
-        Report engine = new ReportEngine(store, parser);
+        Report engine = new AccountingReport(store, parser, converter);
         StringBuilder expected = new StringBuilder()
                 .append("Name; Hired; Fired; Salary;")
                 .append(System.lineSeparator())
                 .append(worker.getName()).append(" ")
                 .append(parser.parse(worker.getHired())).append(" ")
                 .append(parser.parse(worker.getFired())).append(" ")
-                .append(worker.getSalary())
+                .append(converter.convert(Currency.RUB, worker.getSalary(), Currency.EUR))
                 .append(System.lineSeparator());
         assertThat(engine.generate(employee -> true)).isEqualTo(expected.toString());
     }
