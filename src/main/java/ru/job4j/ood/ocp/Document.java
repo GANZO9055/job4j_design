@@ -11,9 +11,7 @@ public class Document {
             System.out.println("Printing PDF document");
         } else if (documentType.equals("Word")) {
             System.out.println("Printing Word document");
-        }
-        // Нарушение OCP
-        else if (documentType.equals("TXT")) {
+        } else if (documentType.equals("TXT")) {
             System.out.println("Printing TXT document");
         } else {
             System.out.println("Error");

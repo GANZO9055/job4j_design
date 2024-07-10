@@ -11,9 +11,7 @@ public class Payment {
             System.out.println("Payment credit card");
         } else if (pay.equals("cash")) {
             System.out.println("Payment cash");
-        }
-        // Нарушение OCP
-        else if (pay.equals("Qr")) {
+        } else if (pay.equals("Qr")) {
             System.out.println("Payment Qr");
         } else {
             System.out.println("Error");
