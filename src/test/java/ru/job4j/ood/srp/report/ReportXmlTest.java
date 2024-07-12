@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.*;
 class ReportXmlTest {
 
     @Test
-    void test2() {
+    void conversationToXml() {
         MemoryStore store = new MemoryStore();
         Calendar now = Calendar.getInstance();
         Employee worker1 = new Employee("Alex", now, now, 100);

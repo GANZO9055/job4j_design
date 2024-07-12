@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.*;
 class ReportJsonTest {
 
     @Test
-    void test1() {
+    void conversationToJson() {
         Store store = new MemoryStore();
         Calendar now = Calendar.getInstance();
         DateTimeParser<Calendar> dateTimeParser = new ReportDateTimeParser();
