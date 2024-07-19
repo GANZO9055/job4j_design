@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-@Disabled
+@Disabled()
 class SimpleParkingTest {
+
     @Test
     void whenParkingCarAndTruck() {
         SimpleParking simpleParking = new SimpleParking(6, 7);
