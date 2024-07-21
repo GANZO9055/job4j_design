@@ -27,7 +27,7 @@ class SimpleParkingTest {
 
     @Test
     void whenNotAvailableSeatsForTruck() {
-        SimpleParking simpleParking = new SimpleParking(10, 2);
+        SimpleParking simpleParking = new SimpleParking(2, 0);
         Truck truck = new Truck(3);
         boolean result = simpleParking.parkVehicle(truck);
         assertFalse(result);
@@ -51,6 +51,6 @@ class SimpleParkingTest {
         simpleParking.parkVehicle(truck1);
         simpleParking.parkVehicle(truck2);
         simpleParking.leaveVehicle(truck2);
-        assertEquals(simpleParking.getNumberAvailableSeatsForTrucks(), 7);
+        assertEquals(simpleParking.getNumberAvailableSeatsForTrucks(), 9);
     }
 }

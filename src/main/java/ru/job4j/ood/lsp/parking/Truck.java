@@ -9,7 +9,7 @@ public class Truck implements Vahicle {
     }
 
     /*
-    Вернуть размер машины
+    Вернуть размер грузовика
      */
     @Override
     public int getSize() {
