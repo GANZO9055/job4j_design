@@ -7,7 +7,7 @@ public class RegexExample {
     public static void main(String[] args) {
         Pattern pattern = Pattern.compile("Я учусь на Job4j");
 
-        String textOne = "Я учусь на Job4j";
+        String textOne = "Я учусь на курсе Job4j";
         Matcher matcherOne = pattern.matcher(textOne);
         boolean isPresentOne = matcherOne.matches();
         System.out.println(isPresentOne);
